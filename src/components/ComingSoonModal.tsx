@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import Image from 'next/image';
-import { Instagram, Calendar } from 'lucide-react';
 import Countdown from '@/components/Countdown';
 
 export default function ComingSoonModal() {
@@ -15,7 +14,7 @@ export default function ComingSoonModal() {
 
   return (
     <div 
-      className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden" 
+      className="fixed top-0 left-0 right-0 bottom-0 z-[99999] flex items-center justify-center overflow-hidden" 
       style={{ 
         position: 'fixed',
         top: 0,
@@ -23,12 +22,9 @@ export default function ComingSoonModal() {
         right: 0,
         bottom: 0,
         width: '100vw', 
-        height: '100dvh',
-        minHeight: '100vh',
+        height: '100vh',
         backgroundColor: 'hsl(var(--primary))',
-        zIndex: 99999,
-        margin: 0,
-        padding: 0
+        zIndex: 99999
       }}
     >
       {/* Fondo con patrón */}
@@ -70,53 +66,8 @@ export default function ComingSoonModal() {
             Toda la info, acá. Muy pronto.
         </p>
 
-        {/* Card del sorteo - Diseño visual */}
-        <div className="mb-3 sm:mb-4 px-2">
-          <div className="relative bg-gradient-to-br from-secondary/30 via-secondary/25 to-secondary/20 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border-2 border-secondary/50 shadow-2xl max-w-sm mx-auto overflow-hidden group hover:border-secondary/70 hover:shadow-[0_0_30px_rgba(251,191,36,0.3)] transition-all duration-300">
-            {/* Efecto de brillo de fondo */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-secondary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-            
-            {/* Contenido */}
-            <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4">
-              {/* Icono Instagram */}
-              <div className="bg-secondary/20 p-2 sm:p-3 rounded-full border-2 border-secondary/40">
-                <Instagram className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-secondary" />
-              </div>
-              
-              {/* Hora destacada */}
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-secondary/80" />
-                  <span className="text-xs sm:text-sm text-secondary/70 uppercase tracking-wider font-semibold">Sorteo Fixture</span>
-                </div>
-                <div className="text-sm sm:text-base text-secondary/90 font-semibold mb-2">
-                  Jueves 13
-                </div>
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-secondary drop-shadow-lg mb-2">
-                  20:00
-                </div>
-                <div className="text-xs sm:text-sm text-secondary/80 font-medium">En vivo</div>
-              </div>
-              
-              {/* Separador decorativo */}
-              <div className="w-12 h-0.5 bg-secondary/40 rounded-full" />
-              
-              {/* Botón Instagram */}
-              <a
-                href="https://www.instagram.com/internobordo?igsh=YXp0N2F0ZWszMTU0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-secondary text-primary px-5 py-2 sm:px-6 sm:py-2.5 rounded-full font-bold text-sm sm:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                <Instagram className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span>@internobordo</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
         {/* Decoración adicional */}
-        <div className="flex justify-center gap-2 mt-2 sm:mt-3">
+        <div className="flex justify-center gap-2 mt-4 sm:mt-6 md:mt-8">
           <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full animate-pulse" />
           <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full animate-pulse" style={{ animationDelay: '150ms' }} />
           <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full animate-pulse" style={{ animationDelay: '300ms' }} />
