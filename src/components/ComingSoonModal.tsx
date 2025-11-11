@@ -15,7 +15,7 @@ export default function ComingSoonModal() {
 
   return (
     <div 
-      className="fixed top-0 left-0 right-0 bottom-0 z-[99999] flex items-center justify-center overflow-hidden" 
+      className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden" 
       style={{ 
         position: 'fixed',
         top: 0,
@@ -23,9 +23,12 @@ export default function ComingSoonModal() {
         right: 0,
         bottom: 0,
         width: '100vw', 
-        height: '100vh',
+        height: '100dvh',
+        minHeight: '100vh',
         backgroundColor: 'hsl(var(--primary))',
-        zIndex: 99999
+        zIndex: 99999,
+        margin: 0,
+        padding: 0
       }}
     >
       {/* Fondo con patrón */}
