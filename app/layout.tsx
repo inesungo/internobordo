@@ -14,6 +14,14 @@ export const metadata: Metadata = {
   icons: {
     icon: '/assets/logo.png',
   },
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#7f1d1d' },
+    { media: '(prefers-color-scheme: dark)', color: '#7f1d1d' },
+  ],
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+  },
 };
 
 export default function RootLayout({
@@ -22,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className={inter.className}>
+    <html lang="es" style={{ backgroundColor: 'hsl(var(--primary))' }}>
+      <body className={inter.className} style={{ backgroundColor: 'hsl(var(--primary))' }}>
         <TooltipProvider>
           <ComingSoonModal />
           {children}
