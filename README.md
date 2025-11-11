@@ -160,3 +160,4 @@ El diseño mantiene el estilo original de Lovable con:
 - La tabla de posiciones se calcula automáticamente desde partidos y resultados
 - Se soportan ajustes de puntos por sanciones (`pts_ajuste_*`)
 test
+
