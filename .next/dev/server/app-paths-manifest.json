@@ -1,0 +1,7 @@
+{
+  "/equipos/page": "app/equipos/page.js",
+  "/estadisticas/page": "app/estadisticas/page.js",
+  "/fixture/page": "app/fixture/page.js",
+  "/page": "app/page.js",
+  "/tabla/page": "app/tabla/page.js"
+}
