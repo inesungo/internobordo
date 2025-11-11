@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react';
 
 interface CountdownProps {
   targetDate: string; // YYYY-MM-DD format
+  variant?: 'default' | 'large'; // Variante para diferentes tamaños
 }
 
-export default function Countdown({ targetDate }: CountdownProps) {
+export default function Countdown({ targetDate, variant = 'default' }: CountdownProps) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -37,6 +38,42 @@ export default function Countdown({ targetDate }: CountdownProps) {
 
     return () => clearInterval(interval);
   }, [targetDate]);
+
+  if (variant === 'large') {
+    return (
+      <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4 w-full">
+        <span className="text-secondary font-bold text-sm sm:text-base md:text-lg lg:text-xl mb-1 sm:mb-2">Comienza en:</span>
+        <div className="flex items-center justify-center gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 flex-wrap">
+          {timeLeft.days > 0 && (
+            <div className="flex flex-col items-center gap-1 sm:gap-1.5 md:gap-2">
+              <div className="bg-secondary/30 text-secondary px-2 py-2 sm:px-3 sm:py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-3.5 rounded-md sm:rounded-lg font-bold min-w-[3rem] sm:min-w-[3.5rem] md:min-w-[4rem] lg:min-w-[5rem] text-center text-lg sm:text-xl md:text-2xl lg:text-3xl shadow-lg border border-secondary/40">
+                {timeLeft.days.toString().padStart(2, '0')}
+              </div>
+              <span className="text-secondary/80 font-semibold text-xs sm:text-sm md:text-base uppercase">Días</span>
+            </div>
+          )}
+          <div className="flex flex-col items-center gap-1 sm:gap-1.5 md:gap-2">
+            <div className="bg-secondary/30 text-secondary px-2 py-2 sm:px-3 sm:py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-3.5 rounded-md sm:rounded-lg font-bold min-w-[3rem] sm:min-w-[3.5rem] md:min-w-[4rem] lg:min-w-[5rem] text-center text-lg sm:text-xl md:text-2xl lg:text-3xl shadow-lg border border-secondary/40">
+              {timeLeft.hours.toString().padStart(2, '0')}
+            </div>
+            <span className="text-secondary/80 font-semibold text-xs sm:text-sm md:text-base uppercase">Horas</span>
+          </div>
+          <div className="flex flex-col items-center gap-1 sm:gap-1.5 md:gap-2">
+            <div className="bg-secondary/30 text-secondary px-2 py-2 sm:px-3 sm:py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-3.5 rounded-md sm:rounded-lg font-bold min-w-[3rem] sm:min-w-[3.5rem] md:min-w-[4rem] lg:min-w-[5rem] text-center text-lg sm:text-xl md:text-2xl lg:text-3xl shadow-lg border border-secondary/40">
+              {timeLeft.minutes.toString().padStart(2, '0')}
+            </div>
+            <span className="text-secondary/80 font-semibold text-xs sm:text-sm md:text-base uppercase">Min</span>
+          </div>
+          <div className="flex flex-col items-center gap-1 sm:gap-1.5 md:gap-2">
+            <div className="bg-secondary/30 text-secondary px-2 py-2 sm:px-3 sm:py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-3.5 rounded-md sm:rounded-lg font-bold min-w-[3rem] sm:min-w-[3.5rem] md:min-w-[4rem] lg:min-w-[5rem] text-center text-lg sm:text-xl md:text-2xl lg:text-3xl shadow-lg border border-secondary/40">
+              {timeLeft.seconds.toString().padStart(2, '0')}
+            </div>
+            <span className="text-secondary/80 font-semibold text-xs sm:text-sm md:text-base uppercase">Seg</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-xs md:text-sm overflow-hidden">
