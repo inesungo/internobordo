@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Users } from 'lucide-react';
 import NavBar from '@/components/NavBar';
+import SectionHero from '@/components/SectionHero';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Accordion,
@@ -49,17 +50,14 @@ export default function EquiposPage() {
   return (
     <div className="min-h-screen bg-background">
       <NavBar />
+      <SectionHero
+        title="Equipos"
+        subtitle="Conoce todos los equipos y sus integrantes"
+        imageSrc="/assets/equipos.jpeg"
+        icon={<Users className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 text-secondary drop-shadow-lg" />}
+      />
 
-      <div className="container mx-auto px-4 py-12">
-        <div className="mb-8 animate-fade-in">
-          <h1 className="text-3xl font-bold text-primary mb-2 flex items-center gap-3">
-            <Users className="h-8 w-8 text-secondary" />
-            Equipos
-          </h1>
-          <p className="text-base text-muted-foreground">
-            Conoce todos los equipos y sus integrantes
-          </p>
-        </div>
+      <div className="container mx-auto px-4 py-8 sm:py-12">
 
         <Tabs defaultValue="Masculino" className="animate-scale-in">
           <TabsList className="grid w-full max-w-md grid-cols-2 mb-8">
@@ -75,12 +73,13 @@ export default function EquiposPage() {
             <Accordion type="single" collapsible className="space-y-4">
               {data.equipos
                 .filter((e: any) => e.categoria === 'Masculino')
-                .map((equipo: any) => {
+                .map((equipo: any, index: number) => {
                   const jugadoresEquipo = data.jugadores?.filter((j: any) => j.equipo_id === equipo.id) || [];
+                  const uniqueKey = equipo.id || `masculino-${index}-${equipo.nombre}`;
                   return (
                     <AccordionItem
-                      key={equipo.id}
-                      value={`equipo-${equipo.id}`}
+                      key={uniqueKey}
+                      value={`equipo-${uniqueKey}`}
                       className="border-2 border-primary/20 rounded-lg overflow-hidden bg-card hover:shadow-xl transition-all"
                     >
                       <AccordionTrigger className="hover:no-underline px-6 py-6 bg-gradient-to-r from-primary/5 to-primary/10 hover:from-primary/10 hover:to-primary/15 transition-all">
@@ -110,9 +109,9 @@ export default function EquiposPage() {
                       <AccordionContent className="px-6 pb-6 pt-4">
                         {jugadoresEquipo.length > 0 ? (
                           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                            {jugadoresEquipo.map((jugador: any) => (
+                            {jugadoresEquipo.map((jugador: any, jugadorIndex: number) => (
                               <div
-                                key={jugador.id}
+                                key={jugador.id || `jugador-${uniqueKey}-${jugadorIndex}`}
                                 className="relative bg-gradient-to-br from-muted/40 to-muted/20 rounded-lg p-4 hover:from-muted/60 hover:to-muted/40 transition-all hover:scale-105 border border-border group"
                               >
                                 <div className="flex flex-col items-center text-center gap-3">
@@ -146,12 +145,13 @@ export default function EquiposPage() {
             <Accordion type="single" collapsible className="space-y-4">
               {data.equipos
                 .filter((e: any) => e.categoria === 'Femenino')
-                .map((equipo: any) => {
+                .map((equipo: any, index: number) => {
                   const jugadoresEquipo = data.jugadores?.filter((j: any) => j.equipo_id === equipo.id) || [];
+                  const uniqueKey = equipo.id || `femenino-${index}-${equipo.nombre}`;
                   return (
                     <AccordionItem
-                      key={equipo.id}
-                      value={`equipo-${equipo.id}`}
+                      key={uniqueKey}
+                      value={`equipo-${uniqueKey}`}
                       className="border-2 border-primary/20 rounded-lg overflow-hidden bg-card hover:shadow-xl transition-all"
                     >
                       <AccordionTrigger className="hover:no-underline px-6 py-6 bg-gradient-to-r from-primary/5 to-primary/10 hover:from-primary/10 hover:to-primary/15 transition-all">
@@ -181,9 +181,9 @@ export default function EquiposPage() {
                       <AccordionContent className="px-6 pb-6 pt-4">
                         {jugadoresEquipo.length > 0 ? (
                           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                            {jugadoresEquipo.map((jugador: any) => (
+                            {jugadoresEquipo.map((jugador: any, jugadorIndex: number) => (
                               <div
-                                key={jugador.id}
+                                key={jugador.id || `jugador-${uniqueKey}-${jugadorIndex}`}
                                 className="relative bg-gradient-to-br from-muted/40 to-muted/20 rounded-lg p-4 hover:from-muted/60 hover:to-muted/40 transition-all hover:scale-105 border border-border group"
                               >
                                 <div className="flex flex-col items-center text-center gap-3">

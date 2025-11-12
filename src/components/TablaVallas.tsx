@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Valla, Equipo } from '@/lib/types';
+import { Loader2 } from 'lucide-react';
 
 interface TablaVallasProps {
   vallas: Valla[];
@@ -45,6 +46,15 @@ export default function TablaVallas({ vallas, equipos, limit = 5, categoria }: T
       .join('')
       .toUpperCase();
   };
+
+  if (sorted.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-12 gap-3 relative z-20">
+        <Loader2 className="h-12 w-12 animate-spin" style={{ color: 'hsl(343, 64%, 25%)' }} />
+        <p className="text-muted-foreground text-center text-sm">Esperando que arranque el campeonato</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4">

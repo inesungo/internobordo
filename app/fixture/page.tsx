@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 import NavBar from '@/components/NavBar';
+import SectionHero from '@/components/SectionHero';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { getData } from '@/lib/data';
@@ -35,17 +36,14 @@ export default function FixturePage() {
   return (
     <div className="min-h-screen bg-background">
       <NavBar />
+      <SectionHero
+        title="Fixture del Torneo"
+        subtitle="Consulta todos los partidos programados y resultados"
+        imageSrc="/assets/fixture.jpeg"
+        icon={<Calendar className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 text-secondary drop-shadow-lg" />}
+      />
 
-      <div className="container mx-auto px-4 py-12">
-        <div className="mb-8 animate-fade-in">
-          <h1 className="text-3xl font-bold text-primary mb-2 flex items-center gap-3">
-            <Calendar className="h-8 w-8 text-secondary" />
-            Fixture del Torneo
-          </h1>
-          <p className="text-base text-muted-foreground">
-            Consulta todos los partidos programados y resultados
-          </p>
-        </div>
+      <div className="container mx-auto px-4 py-8 sm:py-12">
 
         <Tabs defaultValue="Masculino" className="animate-scale-in">
           <div className="flex flex-col md:flex-row gap-4 mb-8">

@@ -14,6 +14,7 @@ export default function Countdown({ targetDate, variant = 'default' }: Countdown
     minutes: 0,
     seconds: 0,
   });
+  const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -28,8 +29,10 @@ export default function Countdown({ targetDate, variant = 'default' }: Countdown
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
+        setIsExpired(false);
       } else {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setIsExpired(true);
       }
     };
 
@@ -38,6 +41,11 @@ export default function Countdown({ targetDate, variant = 'default' }: Countdown
 
     return () => clearInterval(interval);
   }, [targetDate]);
+
+  // Si el tiempo ha terminado, no mostrar nada
+  if (isExpired) {
+    return null;
+  }
 
   if (variant === 'large') {
     return (

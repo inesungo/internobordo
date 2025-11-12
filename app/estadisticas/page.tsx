@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import NavBar from '@/components/NavBar';
+import SectionHero from '@/components/SectionHero';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Target, Shield } from 'lucide-react';
+import { Target, Shield, Loader2 } from 'lucide-react';
 import { getData } from '@/lib/data';
 import TablaGoleadores from '@/components/TablaGoleadores';
 import TablaVallas from '@/components/TablaVallas';
@@ -26,7 +27,10 @@ export default function EstadisticasPage() {
       <div className="min-h-screen bg-background">
         <NavBar />
         <div className="container mx-auto px-4 py-12">
-          <p className="text-center">Cargando...</p>
+          <div className="flex flex-col items-center justify-center py-12 gap-3">
+            <Loader2 className="h-12 w-12 animate-spin" style={{ color: 'hsl(343, 64%, 25%)' }} />
+            <p className="text-muted-foreground text-center text-sm">Cargando estadísticas...</p>
+          </div>
         </div>
       </div>
     );
@@ -35,14 +39,14 @@ export default function EstadisticasPage() {
   return (
     <div className="min-h-screen bg-background">
       <NavBar />
+      <SectionHero
+        title="Estadísticas"
+        subtitle="Goleadores y arqueros menos vencidos del torneo"
+        imageSrc="/assets/estadisticas.jpeg"
+        icon={<Target className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 text-secondary drop-shadow-lg" />}
+      />
 
-      <div className="container mx-auto px-4 py-12">
-        <div className="mb-8 animate-fade-in">
-          <h1 className="text-3xl font-bold text-primary mb-2">Estadísticas</h1>
-          <p className="text-base text-muted-foreground">
-            Goleadores y arqueros menos vencidos del torneo
-          </p>
-        </div>
+      <div className="container mx-auto px-4 py-8 sm:py-12">
 
         <Tabs defaultValue="Masculino" className="animate-scale-in">
           <TabsList className="grid w-full max-w-md grid-cols-2 mb-8">
