@@ -11,6 +11,20 @@ export default function ComingSoonModal() {
 
   useEffect(() => {
     console.log('ComingSoonModal renderizado');
+    
+    // Bloquear el scroll del body cuando el modal está visible
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.height = '100%';
+    
+    // Limpiar cuando el componente se desmonte
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.height = '';
+    };
   }, []);
 
   return (
@@ -28,8 +42,12 @@ export default function ComingSoonModal() {
         backgroundColor: 'hsl(var(--primary))',
         zIndex: 99999,
         margin: 0,
-        padding: 0
+        padding: 0,
+        overflow: 'hidden',
+        touchAction: 'none'
       }}
+      onWheel={(e) => e.preventDefault()}
+      onTouchMove={(e) => e.preventDefault()}
     >
       {/* Fondo con patrón */}
       <div 
