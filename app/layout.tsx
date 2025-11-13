@@ -6,6 +6,7 @@ import { Toaster as Sonner } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 import ComingSoonModal from '@/components/ComingSoonModal';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -41,6 +42,7 @@ export default function RootLayout({
           <Toaster />
           <Sonner />
           <SpeedInsights />
+          <Analytics />
         </TooltipProvider>
       </body>
     </html>
